@@ -1,8 +1,8 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../../WiTesting/wiTest.h"
+#include "wiJSON.h"
+#include "wiTest.h"
 
 const char* enumToString(wiType type) {
 	switch (type) {
@@ -17,7 +17,7 @@ const char* enumToString(wiType type) {
     }
 }
 
-void testDodonaCourses() {
+void testDodonaCourses(void) {
 	// Path so the executables link correctly
 	FILE* jsonFile = fopen("core/file/files/testDodonaCourses.json", "r");
 	assert(jsonFile != NULL);
@@ -157,7 +157,7 @@ void testDodonaCourses() {
 	freeEverything(testObjectCourses);
 }
 
-int main() {
+int main(void) {
 	// Actual Dodona output
 	printf("Testing Dodona courses...\n");
 
@@ -167,5 +167,4 @@ int main() {
 
 	return 0;
 }
-
 

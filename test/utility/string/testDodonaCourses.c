@@ -3,11 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../include/wiUtility.h"
-#include "../../../../WiEnrich/include/enrich.h"
+#include "wiJSON.h"
+#include "wiUtility.h"
 
-int main() {
+int main(void) {
 	// Actual Dodona output
 	printf("Testing Dodona courses...\n");
 	wiValue* testObjectCourses = parseJSONString(
@@ -197,7 +196,6 @@ int main() {
 	assert(currentElement->nextElement == NULL);
 
 	freeEverything(testObjectCourses);
-	char message[] = "Dodona courses test [BRIGHT-GREEN]passed[/].\n\n";
-	wiEnrich(message);
+	char message[] = "Dodona courses test \033[92mpassed\033[0m.\n\n";
 	printf("%s", message);
 }

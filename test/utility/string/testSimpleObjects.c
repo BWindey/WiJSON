@@ -3,11 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../include/wiUtility.h"
-#include "../../../../WiEnrich/include/enrich.h"
+#include "wiJSON.h"
+#include "wiUtility.h"
 
-void testObject1() {
+void testObject1(void) {
 	// Test 1: Simple object with one key-value pair (string)
 	wiValue* testObject1 = parseJSONString("{\"key1\":\"value1\"}");
 	assert(testObject1->contents.pairVal != NULL);
@@ -22,7 +21,7 @@ void testObject1() {
 }
 
 
-void testObject2() {
+void testObject2(void) {
 	// Test 2: Simple object with multiple key-value pairs (int and string)
 	wiValue* testObject2 = parseJSONString(
 		"{ \"key1\": 42, \"key2\": \"value2\" }"
@@ -46,7 +45,7 @@ void testObject2() {
 }
 
 
-void testObject3() {
+void testObject3(void) {
 	// Test 3: Simple object with multiple key-value pairs (float, bool, string)
 	wiValue* testObject3 = parseJSONString("{ \"key1\": 3.14, \"key2\": true, \"key3\": \"value3\" }");
 	assert(testObject3->_type == WIPAIR);
@@ -74,7 +73,7 @@ void testObject3() {
 }
 
 
-void testObject4() {
+void testObject4(void) {
 	// Test 4: Simple object with an array and other values
 	wiValue* testObject4 = parseJSONString("{ \"key1\": [1, 2, 3], \"key2\": false, \"key3\": \"value4\" }");
 	assert(testObject4->_type == WIPAIR);
@@ -114,7 +113,7 @@ void testObject4() {
 }
 
 
-int main() {
+int main(void) {
 	printf("Testing simple objects...\n");
 
 	testObject1();
@@ -122,11 +121,9 @@ int main() {
 	testObject3();
 	testObject4();
 
-	char message[] = "Simple object tests [BRIGHT-GREEN]succeeded[/].\n\n";
-	wiEnrich(message);
+	char message[] = "Simple object tests \033[92msucceeded\033[0m.\n\n";
 	printf("%s", message);
 
 	return 0;
 }
-
 

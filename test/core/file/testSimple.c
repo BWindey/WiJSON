@@ -1,8 +1,8 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../../WiTesting/wiTest.h"
+#include "wiJSON.h"
+#include "wiTest.h"
 
 const char* enumToString(wiType type) {
 	switch (type) {
@@ -26,7 +26,7 @@ wiValue* openFileAndParse(const char* fileName) {
 	return root;
 }
 
-void testInt() {
+void testInt(void) {
 	wiValue* testInt1 = openFileAndParse("core/file/files/testSimpleInt1.json");
 	wiTestEnum(WIINT, testInt1->_type, enumToString);
 	wiTestInt(993214241, testInt1->contents.intVal);
@@ -55,7 +55,7 @@ void testBool() {
 	freeEverything(testFalse);
 }
 
-void testString() {
+void testString(void) {
 	wiValue* testString1 = openFileAndParse("core/file/files/testSimpleString1.json");
 	wiTestEnum(WISTRING, testString1->_type, enumToString);
 	wiTestString(
@@ -73,7 +73,7 @@ void testString() {
 	freeEverything(testString2);
 }
 
-void testFloat() {
+void testFloat(void) {
 	wiValue* testLargeNegative = openFileAndParse("core/file/files/testSimpleFloat1.json");
 	wiTestEnum(WIFLOAT, testLargeNegative->_type, enumToString);
 	wiTestFloat(-3.21e5, testLargeNegative->contents.floatVal);
@@ -90,7 +90,7 @@ void testFloat() {
 	freeEverything(testPi);
 }
 
-int main() {
+int main(void) {
 	printf("Testing simple values...\n");
 
 	testInt();

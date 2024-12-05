@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/wiJSON.h"
+#include "wiJSON.h"
 
 // Forward declarations for internal functions
 bool isBlank(const char);
@@ -54,13 +54,13 @@ wiValue* parseJSONFile(FILE* jsonFile) {
 }
 
 /*
- *	Determine which type of value it is, 
+ *	Determine which type of value it is,
  *	and call the right function to parse that value.
  *
  * 	Asserts when the file-pointer is on a blank space.
  */
 void parseValue(FILE* jsonFile, wiValue* parent) {
-	// Peek the current character, 
+	// Peek the current character,
 	// and put it back because some functions will need it.
 	// Mainly the Bool, Null and Number functions.
 	char c = fgetc(jsonFile);
@@ -85,7 +85,7 @@ void parseValue(FILE* jsonFile, wiValue* parent) {
 			parseBool(jsonFile, parent);
 			break;
 
-		case 'n': 	// Null	
+		case 'n': 	// Null
 			parseNull(jsonFile, parent);
 			break;
 
@@ -136,7 +136,7 @@ void parseBool(FILE* jsonFile, wiValue* parent) {
 /*
  * Tries to parse a string value and assign it to the wiValue* parent contents.
  *
- * Asserts when the FILE* doesn't point to a '"' 
+ * Asserts when the FILE* doesn't point to a '"'
  * and when it couldn't find a closing '"' before EOF.
  */
 void parseString(FILE* jsonFile, wiValue* parent) {
@@ -243,14 +243,14 @@ void parseString(FILE* jsonFile, wiValue* parent) {
  * Small helper function for parseNumber
  */
 bool isValidForNumber(const char c) {
-	return isdigit(c) || c == 'e' || c == 'E' 
+	return isdigit(c) || c == 'e' || c == 'E'
 		|| c == '+' || c == '-' || c == '.';
 }
 
 /*
  * Tries to parse a string value and assign it to the wiValue* parent contents.
  *
- * Asserts when the FILE* doesn't point to a '"' 
+ * Asserts when the FILE* doesn't point to a '"'
  * and when it couldn't find a closing '"' before EOF.
  */
 void parseNumber(FILE* jsonFile, wiValue* parent) {
@@ -385,7 +385,7 @@ void parseArray(FILE* jsonFile, wiValue* parent) {
 		parseValue(jsonFile, currentValue);
 
 		currentElement->elementVal = currentValue;
-		
+
 		c = fgetc(jsonFile);
 		assert(c == ',' || c == ']');
 
@@ -416,8 +416,8 @@ void parseNull(FILE* jsonFile, wiValue* parent) {
 
 /*
  * Free all the allocated memory for the passed wiValue*.
- * It's advised to call this when you don't need your JSON anymore, 
- * because it can take up a bit of space. 
+ * It's advised to call this when you don't need your JSON anymore,
+ * because it can take up a bit of space.
  * */
 void freeEverything(wiValue* root) {
 	switch (root->_type) {
@@ -425,7 +425,7 @@ void freeEverything(wiValue* root) {
 			free(root->contents.stringVal);
 			break;
 
-		case WIARRAY: 
+		case WIARRAY:
 			{
 				wiArrayEl* currentElement = root->contents.arrayVal;
 				wiArrayEl* nextElement;
@@ -441,7 +441,7 @@ void freeEverything(wiValue* root) {
 			}
 			break;
 
-		case WIPAIR: 
+		case WIPAIR:
 			{
 				wiPair* currentPair = root->contents.pairVal;
 				wiPair* nextPair;
@@ -482,7 +482,7 @@ void jumpBlankChars(FILE* file) {
  * Peeks at the fileptr and returns whether it points to a blank character.
  * Blank characters are defined as ' ', '\t', '\n' and '\r'.
  *
- * This does NOT check if the pointer points to EOF, 
+ * This does NOT check if the pointer points to EOF,
  * you should check this seperatly.
  */
 bool isBlank(const char c) {

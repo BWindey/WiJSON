@@ -2,3 +2,8 @@
 *.out
 *.sh
 *.a
+.cache/
+compile_commands.json
+test/.cache/
+test/compile_commands.json
+

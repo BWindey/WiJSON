@@ -1,7 +1,7 @@
 #include <assert.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../../WiTesting/wiTest.h"
+#include "wiJSON.h"
+#include "wiTest.h"
 
 const char* enumToString(wiType type) {
 	switch (type) {
@@ -16,7 +16,7 @@ const char* enumToString(wiType type) {
     }
 }
 
-void testDodonaCourses() {
+void testDodonaCourses(void) {
 	wiValue* testObjectCourses = parseJSONString(
 		"["
 		"	{"
@@ -220,7 +220,7 @@ void testDodonaCourses() {
 	freeEverything(testObjectCourses);
 }
 
-int main() {
+int main(void) {
 	// Actual Dodona output
 	printf("Testing Dodona courses...\n");
 
@@ -230,5 +230,4 @@ int main() {
 
 	return 0;
 }
-
 

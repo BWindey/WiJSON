@@ -1,5 +1,5 @@
-#include "../../../include/wiJSON.h"
-#include "../../../../WiTesting/wiTest.h"
+#include "wiJSON.h"
+#include "wiTest.h"
 
 const char* enumToString(wiType type) {
 	switch (type) {
@@ -14,7 +14,7 @@ const char* enumToString(wiType type) {
     }
 }
 
-void testInt() {
+void testInt(void) {
 	wiValue* testInt1 = parseJSONString("993214241");
 	wiTestEnum(WIINT, testInt1->_type, enumToString);
 	wiTestInt(993214241, testInt1->contents.intVal);
@@ -31,7 +31,7 @@ void testInt() {
 	freeEverything(testInt3);
 }
 
-void testBool() {
+void testBool(void) {
 	wiValue* testTrue = parseJSONString("true");
 	wiTestEnum(WIBOOL, testTrue->_type, enumToString);
 	wiTestBool(true, testTrue->contents.boolVal);
@@ -43,7 +43,7 @@ void testBool() {
 	freeEverything(testFalse);
 }
 
-void testString() {
+void testString(void) {
 	wiValue* testString = parseJSONString(
 		"\"BEGINhiweonfioewfamcl;mkclm oqfnieowq;mfkl;w mfkfo;wqnmcEND\""
 	);
@@ -55,7 +55,7 @@ void testString() {
 	freeEverything(testString);
 }
 
-void testFloat() {
+void testFloat(void) {
 	wiValue* testLargeNegative = parseJSONString("-3.21e5");
 	wiTestEnum(WIFLOAT, testLargeNegative->_type, enumToString);
 	wiTestFloat(-3.21e5, testLargeNegative->contents.floatVal);
@@ -72,7 +72,7 @@ void testFloat() {
 	freeEverything(testPi);
 }
 
-int main() {
+int main(void) {
 	printf("Testing simple values...\n");
 
 

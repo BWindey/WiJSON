@@ -1,7 +1,7 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -I../include -I../../WiEnrich -Wall -Wextra -pedantic -g
-LDFLAGS = -L../lib -lwiJSON -L../../WiEnrich/lib -lwienrich
+CFLAGS = -I../include -I../submodules/WiTesting -Wall -Wextra -pedantic -g
+LDFLAGS = -L../lib -lwiJSON
 
 TESTING_LIB = ../../WiTesting/wiTest.h
 
@@ -103,9 +103,9 @@ $(OUT_UTILITY_FILE_DIR):
 	mkdir -p $(OUT_UTILITY_FILE_DIR)
 
 
-clean: 
+clean:
 	rm -rf $(OUT_CORE_STRING_DIR) $(OUT_CORE_FILE_DIR)
 	rm -rf $(OUT_UTILITY_STRING_DIR) $(OUT_UTILITY_FILE_DIR)
 
 
-.PHONY: all clean core utility corestring corefile utilitystring utilityfile cleantest 
+.PHONY: all clean core utility corestring corefile utilitystring utilityfile cleantest

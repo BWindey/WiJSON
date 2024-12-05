@@ -3,11 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../include/wiUtility.h"
-#include "../../../../WiEnrich/include/enrich.h"
+#include "wiJSON.h"
+#include "wiUtility.h"
 
-int main() {
+int main(void) {
 	// Actual Dodona output
 	printf("Testing Dodona series...\n");
 
@@ -37,7 +36,6 @@ int main() {
 	assert(strcmp(getStringVal(get(pair, "name")), "week 12: tweede evaluaie (JavaScript)"));
 
 	freeEverything(testObjectSeries);
-	char message[] = "Dodona series test [BRIGHT-GREEN]passed[/].\n\n";
-	wiEnrich(message);
+	char message[] = "Dodona series test \033[92mpassed\033[0m.\n\n";
 	printf("%s", message);
 }

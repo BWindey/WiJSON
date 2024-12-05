@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../../WiTesting/wiTest.h"
+#include "wiJSON.h"
+#include "wiTest.h"
 
 const char* enumToString(wiType type) {
 	switch (type) {
@@ -18,7 +18,7 @@ const char* enumToString(wiType type) {
     }
 }
 
-void testSimpleArray() {
+void testSimpleArray(void) {
 	// Path because so the executables link correctly
 	FILE* jsonFile = fopen("core/file/files/testArray.json", "r");
 	assert(jsonFile != NULL);
@@ -73,7 +73,7 @@ void testSimpleArray() {
 	freeEverything(testArray);
 }
 
-int main() {
+int main(void) {
 	printf("Testing simple array...\n");
 
 	testSimpleArray();

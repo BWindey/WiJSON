@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../../WiTesting/wiTest.h"
+#include "wiJSON.h"
+#include "wiTest.h"
 
 const char* enumToString(wiType type) {
 	switch (type) {
@@ -18,7 +18,7 @@ const char* enumToString(wiType type) {
     }
 }
 
-void testDodonaSeries() {
+void testDodonaSeries(void) {
 	// Path so the executables link correctly
 	FILE* jsonFile = fopen("core/file/files/testDodonaSeries.json", "r");
 	assert(jsonFile != NULL);
@@ -130,7 +130,7 @@ void testDodonaSeries() {
 }
 
 
-int main() {
+int main(void) {
 	// Actual Dodona output
 	printf("Testing Dodona series...\n");
 
@@ -140,5 +140,4 @@ int main() {
 
 	return 0;
 }
-
 

@@ -1,7 +1,7 @@
 #include <assert.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../../WiTesting/wiTest.h"
+#include "wiJSON.h"
+#include "wiTest.h"
 
 const char* enumToString(wiType type) {
 	switch (type) {
@@ -16,7 +16,7 @@ const char* enumToString(wiType type) {
     }
 }
 
-void testObject1() {
+void testObject1(void) {
 	// Test 1: Simple object with one key-value pair (string)
 	wiValue* testObject1 = parseJSONString("{\"key1\":\"value1\"}");
 	wiTestEnum(WIPAIR, testObject1->_type, enumToString);
@@ -30,7 +30,7 @@ void testObject1() {
 	freeEverything(testObject1);
 }
 
-void testObject2() {
+void testObject2(void) {
 	// Test 2: Simple object with multiple key-value pairs (int and string)
 	wiValue* testObject2 = parseJSONString("{ \"key1\": 42, \"key2\": \"value2\" }");
 	wiTestEnum(WIPAIR, testObject2->_type, enumToString);
@@ -50,7 +50,7 @@ void testObject2() {
 	freeEverything(testObject2);
 }
 
-void testObject3() {
+void testObject3(void) {
 	// Test 3: Simple object with multiple key-value pairs (float, bool, string)
 	wiValue* testObject3 = parseJSONString("{ \"key1\": 3.14, \"key2\": true, \"key3\": \"value3\" }");
 	wiTestEnum(WIPAIR, testObject3->_type, enumToString);
@@ -76,7 +76,7 @@ void testObject3() {
 	freeEverything(testObject3);
 }
 
-void testObject4() {
+void testObject4(void) {
 	// Test 4: Simple object with an array and other values
 	wiValue* testObject4 = parseJSONString(
 			"{ \"key1\": [1, 2, 3], \"key2\": false, \"key3\": \"value4\" }"
@@ -119,7 +119,7 @@ void testObject4() {
 	freeEverything(testObject4);
 }
 
-int main() {
+int main(void) {
 	printf("Testing simple objects...\n");
 
 	testObject1();

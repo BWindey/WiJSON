@@ -1,8 +1,8 @@
 #include <assert.h>
 #include <string.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../../WiTesting/wiTest.h"
+#include "wiJSON.h"
+#include "wiTest.h"
 
 const char* enumToString(wiType type) {
 	switch (type) {
@@ -17,7 +17,7 @@ const char* enumToString(wiType type) {
     }
 }
 
-void testSimpleArray() {
+void testSimpleArray(void) {
 	wiValue* testArray = parseJSONString(
 			"[ 1, -32.4, \"Hello, World!\", true, false, -32e4, null]"
 	);
@@ -70,7 +70,7 @@ void testSimpleArray() {
 	freeEverything(testArray);
 }
 
-int main() {
+int main(void) {
 	printf("Testing simple array...\n");
 
 	testSimpleArray();

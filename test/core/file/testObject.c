@@ -1,8 +1,8 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "../../../include/wiJSON.h"
-#include "../../../../WiTesting/wiTest.h"
+#include "wiJSON.h"
+#include "wiTest.h"
 
 const char* enumToString(wiType type) {
 	switch (type) {
@@ -26,7 +26,7 @@ wiValue* openFileAndParse(const char* fileName) {
 	return root;
 }
 
-void testObject1() {
+void testObject1(void) {
 	// Test 1: Simple object with one key-value pair (string)
 	wiValue* testObject1 = openFileAndParse("core/file/files/testObject1.json");
 
@@ -41,7 +41,7 @@ void testObject1() {
 	freeEverything(testObject1);
 }
 
-void testObject2() {
+void testObject2(void) {
 	// Test 2: Simple object with multiple key-value pairs (int and string)
 	wiValue* testObject2 = openFileAndParse("core/file/files/testObject2.json");
 
@@ -62,7 +62,7 @@ void testObject2() {
 	freeEverything(testObject2);
 }
 
-void testObject3() {
+void testObject3(void) {
 	// Test 3: Simple object with multiple key-value pairs (float, bool, string)
 	wiValue* testObject3 = openFileAndParse("core/file/files/testObject3.json");
 
@@ -89,7 +89,7 @@ void testObject3() {
 	freeEverything(testObject3);
 }
 
-void testObject4() {
+void testObject4(void) {
 	// Test 4: Simple object with an array and other values
 	wiValue* testObject4 = openFileAndParse("core/file/files/testObject4.json");
 
@@ -131,7 +131,7 @@ void testObject4() {
 	freeEverything(testObject4);
 }
 
-int main() {
+int main(void) {
 	printf("Testing simple objects...\n");
 
 	testObject1();
