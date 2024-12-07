@@ -10,7 +10,7 @@ LIBDIR = lib
 
 
 # Library names
-LIBRARY = $(LIBDIR)/libwiJSON.a
+LIBRARY = $(LIBDIR)/libwijson.a
 
 # Source and object files
 SRC_FILES = $(wildcard $(SRCDIR)/*.c)
