@@ -1,4 +1,5 @@
-#pragma once
+#ifndef WIUTILITY_HEADER_GUARD
+#define WIUTILITY_HEADER_GUARD
 
 #include <stdbool.h>
 
@@ -14,3 +15,5 @@ wiArrayEl* getArrayVal(wiPair*);
 bool isNull(wiPair*);
 
 wiPair* get(wiPair*, const char*);
+
+#endif /* !WIUTILITY_HEADER_GUARD */

@@ -1,8 +1,10 @@
-#pragma once
-#include <stdbool.h>	// Required for the boolean value
+#ifndef WIJSON_HEADER_GUARD
+#define WIJSON_HEADER_GUARD
+
+#include <stdbool.h>	/* Required for the boolean value */
 #include <stdio.h>
 
-// Forward declaration needed for cyclic uses
+/* Forward declaration needed for cyclic uses */
 typedef struct wiArrayEl wiArrayEl;
 typedef struct wiValue 	 wiValue;
 typedef struct wiPair 	 wiPair;
@@ -20,19 +22,19 @@ typedef enum wiType {
 	WIARRAY, WIBOOL, WIFLOAT, WIINT, WINULL, WIPAIR, WISTRING
 } wiType;
 
-// Represent value's from key-value-pairs
+/* Represent value's from key-value-pairs */
 typedef struct wiValue {
 	wiType _type;
 	wiValueContents contents;
 } wiValue;
 
-// Represent arrays by elements pointing to eachother
+/* Represent arrays by elements pointing to eachother */
 typedef struct wiArrayEl {
 	wiValue* elementVal;
 	wiArrayEl* nextElement;
 } wiArrayEl;
 
-// Represent key-value pairs pointing to the next for iteration
+/* Represent key-value pairs pointing to the next for iteration */
 typedef struct wiPair {
 	char* key;
 	wiValue* value;
@@ -43,7 +45,9 @@ typedef struct wiPair {
 wiValue* parseJSONString(const char*);
 wiValue* parseJSONFile(FILE*);
 
-void dumpJSONToString(wiValue* root, char* string);
-void dumpJSONToFile(wiValue* root, char fileName[]);
+void dumpJSONToString(const wiValue* root, char* string);
+void dumpJSONToFile(const wiValue* root, const char* fileName);
 
 void freeEverything(wiValue* root);
+
+#endif /* !WIJSON_HEADER_GUARD */
