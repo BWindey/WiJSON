@@ -45,8 +45,9 @@ typedef struct wiPair {
 wiValue* parseJSONString(const char*);
 wiValue* parseJSONFile(FILE*);
 
-void dumpJSONToString(const wiValue* root, char* string);
-void dumpJSONToFile(const wiValue* root, const char* fileName);
+void dump_JSON_to_string(const wiValue* root, char* string);
+void dump_JSON_to_file(const wiValue* root, const char* file_name);
+void dump_JSON_to_file_append(const wiValue* root, const char* file_name);
 
 void freeEverything(wiValue* root);
 
