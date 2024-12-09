@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -Iinclude -Wall -Wextra -pedantic
+CFLAGS = -Iinclude -Isubmodules/WiTesting -Wall -Wextra -pedantic
 
 # Directories
 SRCDIR = src
